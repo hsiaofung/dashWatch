@@ -1,0 +1,43 @@
+<div class="container">
+  <nz-card class="card">
+    <h2 class="title">Create a new account</h2>
+
+    <nz-form [formGroup]="signUpForm">
+      <nz-form-item class="form-item"> 
+        <nz-form-control nzErrorTip="Please enter your email">
+          <nz-input-group nzPrefixIcon="user" class="input-group">
+            <input nz-input formControlName="email" placeholder="Email" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item class="form-item">
+        <nz-form-control nzErrorTip="Please enter your password">
+          <nz-input-group nzPrefixIcon="lock" class="input-group">
+            <input
+              nz-input
+              type="password"
+              formControlName="password"
+              placeholder="Password"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item class="form-item">
+        <nz-form-control>
+          <input
+            nz-input
+            type="password"
+            formControlName="confirmPassword"
+            placeholder="Confirm Password"
+          />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item class="form-item">
+        <button nz-button nzType="primary" (click)="onSignUp()">Sign Up</button>
+      </nz-form-item>
+    </nz-form>
+  </nz-card>
+</div>

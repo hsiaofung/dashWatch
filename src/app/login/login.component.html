@@ -1,0 +1,65 @@
+<div class="container">
+  <nz-card class="card">
+    <h2 class="title">Login</h2>
+
+    <form nz-form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <nz-form-item class="form-item">
+        <nz-form-control nzErrorTip="Please enter your email">
+          <nz-input-group nzPrefixIcon="user" class="input-group">
+            <input nz-input formControlName="email" placeholder="Email" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item class="form-item">
+        <nz-form-control nzErrorTip="Please enter your password">
+          <nz-input-group nzPrefixIcon="lock" class="input-group">
+            <input
+              nz-input
+              [type]="isPasswordVisible ? 'text' : 'password'"
+              formControlName="password"
+              placeholder="Password"
+            />
+            <i
+              nz-icon
+              [nzType]="isPasswordVisible ? 'eye' : 'eye-invisible'"
+              class="password-toggle"
+              (click)="togglePasswordVisibility()"
+            ></i>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item class="form-item">
+        <nz-form-control>
+          <label nz-checkbox formControlName="remember">Remember me</label>
+          <a nz-link href="/forgotPassword" class="forgot-password"
+            >Forgot password?</a
+          >
+        </nz-form-control>
+      </nz-form-item>
+
+      <button nz-button nzType="primary" [disabled]="loginForm.invalid">
+        Login
+      </button>
+
+      <!-- 注册入口 -->
+      <nz-form-item class="form-item">
+        <p class="text-center">
+          Don't have an account?
+          <a nz-link href="/signUp" class="sign-up"
+            >Sign up now</a
+          >
+        </p>
+      </nz-form-item>
+    </form>
+    <!-- 这里放社交登录 -->
+    <nz-divider>Or sign in with</nz-divider>
+    <button nz-button nzType="default" (click)="loginWithGoogle()">
+      <i nz-icon nzType="google" nzTheme="outline"></i> Login with Google
+    </button>
+    <button nz-button nzType="primary" (click)="loginWithFacebook()">
+      <i nz-icon nzType="facebook" nzTheme="outline"></i> Login with Facebook
+    </button>
+  </nz-card>
+</div>
