@@ -1,0 +1,34 @@
+<nz-table #basicTable [nzData]="listOfData" [nzBordered]="true" [nzSize]="'middle'">
+  <thead>
+    <tr>
+      <th nzWidth="10%">ID</th>
+      <th nzWidth="20%">Name</th>
+      <th nzWidth="15%">Status</th>
+      <th nzWidth="20%">IP / Location</th>
+      <th nzWidth="15%">CPU Usage</th>
+      <th nzWidth="15%">Memory Usage</th>
+      <th nzWidth="15%">Last Updated</th>
+      <th nzWidth="15%">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>{{ data.id }}</td>
+      <td>{{ data.name }}</td>
+      <td>
+        <nz-tag [nzColor]="data.status === 'Normal' ? 'green' : data.status === 'Warning' ? 'orange' : 'red'">
+          {{ data.status }}
+        </nz-tag>
+      </td>
+      <td>{{ data.location }}</td>
+      <td><nz-progress [nzPercent]="data.cpuUsage" [nzShowInfo]="false"></nz-progress></td>
+      <td><nz-progress [nzPercent]="data.memoryUsage" [nzShowInfo]="false"></nz-progress></td>
+      <td>{{ data.lastUpdated | date: 'short' }}</td>
+      <td>
+        <button nz-button nzType="link" (click)="edit(data.id)">Edit</button>
+        <button nz-button nzType="link" (click)="delete(data.id)">Delete</button>
+        <button nz-button nzType="link" (click)="viewDetails(data.id)">View Details</button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
